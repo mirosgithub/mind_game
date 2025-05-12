@@ -20,7 +20,13 @@ public class Game {
 
   public void play() {
     currentRound++;
+    
+    // display round
     MessageCli.START_ROUND.printMessage(currentRound, numRounds);
+
+    // prompt for colors
+    MessageCli.ASK_HUMAN_INPUT.printMessage();
+    
   }
 
   public void showStats() {}

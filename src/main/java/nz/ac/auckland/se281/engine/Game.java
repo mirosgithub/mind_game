@@ -10,6 +10,7 @@ public class Game {
 
   private int numRounds;
   private int currentRound;
+  private String playerName;
   private Colour playerColour = null;
   private Colour playerGuess = null;
   private Colour powerColour;
@@ -19,7 +20,7 @@ public class Game {
   public void newGame(Difficulty difficulty, int numRounds, String[] options) {
     this.numRounds = numRounds;
     this.currentRound = 0;
-    String playerName = options[0];
+    this.playerName = options[0];
     MessageCli.WELCOME_PLAYER.printMessage(playerName);
   }
 
@@ -43,6 +44,9 @@ public class Game {
       // get colour input again
       getColourInput();
     }
+
+    // confirm action 
+    MessageCli.PRINT_INFO_MOVE.printMessage(playerName, playerColour, playerGuess);
 
     // select power colour every 3 rounds
     if (currentRound % 3 == 0) {

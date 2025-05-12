@@ -12,6 +12,7 @@ public class Game {
   private int currentRound;
   private Colour playerColour = null;
   private Colour playerGuess = null;
+  private Colour powerColour;
 
   public Game() {}
 
@@ -41,6 +42,14 @@ public class Game {
 
       // get colour input again
       getColourInput();
+    }
+
+    // select power colour every 3 rounds
+    if (currentRound % 3 == 0) {
+      powerColour = Colour.getRandomColourForPowerColour();
+
+      // announce the colour
+      MessageCli.PRINT_POWER_COLOUR.printMessage(powerColour);
     }
   }
 

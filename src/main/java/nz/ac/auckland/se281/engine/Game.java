@@ -69,7 +69,12 @@ public class Game {
     awardPoints(human);
   }
 
-  public void showStats() {}
+  public void showStats() {
+    if (!gameOn) {
+      MessageCli.GAME_NOT_STARTED.printMessage();
+      return;
+    }
+  }
 
   public void awardPoints(Player player) {
     int points = 0;

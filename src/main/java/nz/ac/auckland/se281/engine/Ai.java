@@ -8,4 +8,8 @@ public abstract class Ai extends Player {
     super(name);
     strategy = new RandomStrategy();
   }
+
+  public void play() {
+    colour = strategy.selectColour();
+  }
 }

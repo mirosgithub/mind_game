@@ -37,9 +37,11 @@ public class Game {
     MessageCli.START_ROUND.printMessage(currentRound, numRounds);
 
     // let each player play
+    ai.play();
     human.play();
 
-    // confirm action
+    // confirm actions
+    MessageCli.PRINT_INFO_MOVE.printMessage(ai.getName(), ai.getColour(), ai.getGuess());
     MessageCli.PRINT_INFO_MOVE.printMessage(human.getName(), human.getColour(), human.getGuess());
 
     // select power colour every 3 rounds

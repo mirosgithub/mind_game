@@ -24,7 +24,11 @@ public class Game {
 
     // initialise players
     ai = AiFactory.createAi(AI_NAME, this.difficulty);
-    this.human = new Human(options[0]);
+    human = new Human(options[0]);
+
+    // set opponents
+    ai.setOpponent(human);
+    human.setOpponent(ai);
 
     // greet human player
     MessageCli.WELCOME_PLAYER.printMessage(human.getName());
@@ -54,16 +58,16 @@ public class Game {
     }
 
     // calculate and award points
-    awardPoints(ai, human);
-    awardPoints(human, ai);
+    awardPoints(ai);
+    awardPoints(human);
   }
 
   public void showStats() {}
 
-  public void awardPoints(Player player, Player opponent) {
+  public void awardPoints(Player player) {
     int points = 0;
 
-    if (player.getGuess().equals(opponent.getColour())) {
+    if (player.getGuess().equals(player.getOpponent().getColour())) {
       points += 1;
       if (player.getGuess().equals(powerColour)) {
         points += 2;

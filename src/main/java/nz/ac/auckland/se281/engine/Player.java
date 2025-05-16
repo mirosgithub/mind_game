@@ -7,6 +7,7 @@ public abstract class Player {
   protected String name;
   protected Colour colour;
   protected Colour guess;
+  protected Player opponent;
 
   public Player(String name) {
     this.name = name;
@@ -32,6 +33,14 @@ public abstract class Player {
 
   public void setGuess(Colour guess) {
     this.guess = guess;
+  }
+
+  public Player getOpponent() {
+    return opponent;
+  }
+
+  public void setOpponent(Player opponent) {
+    this.opponent = opponent;
   }
 
 }

@@ -13,6 +13,7 @@ public class Game {
   private int numRounds;
   private int currentRound;
   private Colour powerColour;
+  private boolean gameOn = false;
 
   public Game() {}
 
@@ -32,9 +33,15 @@ public class Game {
 
     // greet human player
     MessageCli.WELCOME_PLAYER.printMessage(human.getName());
+
+    gameOn = true;
   }
 
   public void play() {
+    if (!gameOn) {
+      MessageCli.GAME_NOT_STARTED.printMessage();
+      return;
+    }
     currentRound++;
 
     // display round

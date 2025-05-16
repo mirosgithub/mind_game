@@ -8,7 +8,9 @@ import nz.ac.auckland.se281.model.Colour;
 public class Game {
   public static String AI_NAME = "HAL-9000";
 
+  private Ai ai;
   private Human human;
+  private Difficulty difficulty;
   private int numRounds;
   private int currentRound;
   private Colour powerColour;
@@ -16,9 +18,16 @@ public class Game {
   public Game() {}
 
   public void newGame(Difficulty difficulty, int numRounds, String[] options) {
+    // configure game settings
+    this.difficulty = difficulty;
     this.numRounds = numRounds;
     this.currentRound = 0;
+    
+    // initialise players
+    ai = AiFactory.createAi(AI_NAME, this.difficulty);
     this.human = new Human(options[0]);
+
+    // greet human player
     MessageCli.WELCOME_PLAYER.printMessage(human.getName());
   }
 

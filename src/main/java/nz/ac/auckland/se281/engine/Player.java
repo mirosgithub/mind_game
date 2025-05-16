@@ -4,9 +4,9 @@ import nz.ac.auckland.se281.model.Colour;
 
 public abstract class Player {
   
-  String name;
-  Colour colour;
-  Colour guess;
+  protected String name;
+  protected Colour colour;
+  protected Colour guess;
 
   public Player(String name) {
     this.name = name;

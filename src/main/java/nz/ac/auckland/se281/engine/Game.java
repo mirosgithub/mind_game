@@ -2,7 +2,6 @@ package nz.ac.auckland.se281.engine;
 
 import nz.ac.auckland.se281.Main.Difficulty;
 import nz.ac.auckland.se281.cli.MessageCli;
-import nz.ac.auckland.se281.cli.Utils;
 import nz.ac.auckland.se281.model.Colour;
 
 public class Game {
@@ -22,7 +21,7 @@ public class Game {
     this.difficulty = difficulty;
     this.numRounds = numRounds;
     this.currentRound = 0;
-    
+
     // initialise players
     ai = AiFactory.createAi(AI_NAME, this.difficulty);
     this.human = new Human(options[0]);
@@ -37,20 +36,8 @@ public class Game {
     // display round
     MessageCli.START_ROUND.printMessage(currentRound, numRounds);
 
-    // prompt for colours
-    MessageCli.ASK_HUMAN_INPUT.printMessage();
-
-    // get colour input
-    getColourInput();
-
-    // validate input
-    while (human.getColour() == null || human.getGuess() == null) {
-      // print error message
-      MessageCli.INVALID_HUMAN_INPUT.printMessage();
-
-      // get colour input again
-      getColourInput();
-    }
+    // let each player play
+    human.play();
 
     // confirm action
     MessageCli.PRINT_INFO_MOVE.printMessage(human.getName(), human.getColour(), human.getGuess());
@@ -65,16 +52,4 @@ public class Game {
   }
 
   public void showStats() {}
-
-  private void getColourInput() {
-    // read input
-    String input = Utils.scanner.nextLine();
-    String[] inputs = input.split(" ");
-
-    // convert to Colour enum
-    if (inputs.length == 2) {
-      human.setColour(Colour.fromInput(inputs[0]));
-      human.setGuess(Colour.fromInput(inputs[1]));
-    }
-  }
 }

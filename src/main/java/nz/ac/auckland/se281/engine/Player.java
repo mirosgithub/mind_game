@@ -8,11 +8,13 @@ public abstract class Player {
   protected Colour colour;
   protected Colour guess;
   protected Player opponent;
+  protected int roundPoints;
 
   public Player(String name) {
     this.name = name;
     this.colour = null;
     this.guess = null;
+    this.roundPoints = 0;
   }
 
   public String getName() {
@@ -41,6 +43,14 @@ public abstract class Player {
 
   public void setOpponent(Player opponent) {
     this.opponent = opponent;
+  }
+
+  public int getRoundPoint() {
+    return roundPoints;
+  }
+
+  public void setRoundPoints(int points) {
+    this.roundPoints = points;
   }
 
 }

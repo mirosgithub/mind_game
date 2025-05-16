@@ -74,6 +74,8 @@ public class Game {
       }
     }
 
+    player.setRoundPoints(points);
+
     MessageCli.PRINT_OUTCOME_ROUND.printMessage(player.getName(), points);
   }
 }

@@ -8,11 +8,9 @@ import nz.ac.auckland.se281.model.Colour;
 public class Game {
   public static String AI_NAME = "HAL-9000";
 
+  private Player human;
   private int numRounds;
   private int currentRound;
-  private String playerName;
-  private Colour playerColour = null;
-  private Colour playerGuess = null;
   private Colour powerColour;
 
   public Game() {}
@@ -20,8 +18,8 @@ public class Game {
   public void newGame(Difficulty difficulty, int numRounds, String[] options) {
     this.numRounds = numRounds;
     this.currentRound = 0;
-    this.playerName = options[0];
-    MessageCli.WELCOME_PLAYER.printMessage(playerName);
+    this.human = new Player(options[0]);
+    MessageCli.WELCOME_PLAYER.printMessage(human.getName());
   }
 
   public void play() {
@@ -37,7 +35,7 @@ public class Game {
     getColourInput();
 
     // validate input
-    while (playerColour == null || playerGuess == null) {
+    while (human.getColour() == null || human.getGuess() == null) {
       // print error message
       MessageCli.INVALID_HUMAN_INPUT.printMessage();
 
@@ -45,8 +43,8 @@ public class Game {
       getColourInput();
     }
 
-    // confirm action 
-    MessageCli.PRINT_INFO_MOVE.printMessage(playerName, playerColour, playerGuess);
+    // confirm action
+    MessageCli.PRINT_INFO_MOVE.printMessage(human.getName(), human.getColour(), human.getGuess());
 
     // select power colour every 3 rounds
     if (currentRound % 3 == 0) {
@@ -66,8 +64,8 @@ public class Game {
 
     // convert to Colour enum
     if (inputs.length == 2) {
-      playerColour = Colour.fromInput(inputs[0]);
-      playerGuess = Colour.fromInput(inputs[1]);
+      human.setColour(Colour.fromInput(inputs[0]));
+      human.setGuess(Colour.fromInput(inputs[1]));
     }
   }
 }

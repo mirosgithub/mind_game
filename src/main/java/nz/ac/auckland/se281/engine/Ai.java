@@ -10,6 +10,7 @@ public abstract class Ai extends Player {
   }
 
   public void play() {
-    colour = strategy.selectColour();
+    strategy.selectColour(this);
+    strategy.guessColour(this);
   }
 }

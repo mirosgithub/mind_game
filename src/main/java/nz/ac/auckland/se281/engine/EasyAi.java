@@ -9,6 +9,5 @@ public class EasyAi extends Ai {
   @Override
   public void play() {
     super.play();
-    guess = strategy.selectColour();
   }
 }

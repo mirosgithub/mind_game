@@ -1,7 +1,6 @@
 package nz.ac.auckland.se281.engine;
 
-import nz.ac.auckland.se281.model.Colour;
-
 public interface Strategy {
-  Colour selectColour();
+  void selectColour(Player player);
+  void guessColour(Player player);
 }

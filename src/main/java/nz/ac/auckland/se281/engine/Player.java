@@ -3,18 +3,20 @@ package nz.ac.auckland.se281.engine;
 import nz.ac.auckland.se281.model.Colour;
 
 public abstract class Player {
-  
+
   protected String name;
   protected Colour colour;
   protected Colour guess;
   protected Player opponent;
   protected int roundPoints;
+  protected int totalPoints;
 
   public Player(String name) {
     this.name = name;
-    this.colour = null;
-    this.guess = null;
-    this.roundPoints = 0;
+    colour = null;
+    guess = null;
+    roundPoints = 0;
+    totalPoints = 0;
   }
 
   public String getName() {
@@ -45,12 +47,16 @@ public abstract class Player {
     this.opponent = opponent;
   }
 
-  public int getRoundPoint() {
+  public int getRoundPoints() {
     return roundPoints;
   }
 
-  public void setRoundPoints(int points) {
-    this.roundPoints = points;
+  public void setPoints(int points) {
+    roundPoints = points;
+    totalPoints += points;
   }
 
+  public int getTotalPoints() {
+    return totalPoints;
+  }
 }

@@ -74,6 +74,9 @@ public class Game {
       MessageCli.GAME_NOT_STARTED.printMessage();
       return;
     }
+
+    MessageCli.PRINT_PLAYER_POINTS.printMessage(ai.getName(), ai.getTotalPoints());
+    MessageCli.PRINT_PLAYER_POINTS.printMessage(human.getName(), human.getTotalPoints());
   }
 
   public void awardPoints(Player player) {
@@ -86,7 +89,7 @@ public class Game {
       }
     }
 
-    player.setRoundPoints(points);
+    player.setPoints(points);
 
     MessageCli.PRINT_OUTCOME_ROUND.printMessage(player.getName(), points);
   }

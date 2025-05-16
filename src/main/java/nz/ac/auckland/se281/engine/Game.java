@@ -67,6 +67,12 @@ public class Game {
     // calculate and award points
     awardPoints(ai);
     awardPoints(human);
+
+    // end game in the last round
+    if (currentRound == numRounds) {
+      showStats();
+      endGame();
+    }
   }
 
   public void showStats() {
@@ -92,5 +98,16 @@ public class Game {
     player.setPoints(points);
 
     MessageCli.PRINT_OUTCOME_ROUND.printMessage(player.getName(), points);
+  }
+
+  public void endGame() {
+    MessageCli.PRINT_END_GAME.printMessage();
+    if (ai.getTotalPoints() == human.getTotalPoints()) {
+      MessageCli.PRINT_TIE_GAME.printMessage();
+    } else if (ai.getTotalPoints() > human.getTotalPoints()) {
+      MessageCli.PRINT_WINNER_GAME.printMessage(ai.getName());
+    } else {
+      MessageCli.PRINT_WINNER_GAME.printMessage(human.getName());
+    }
   }
 }

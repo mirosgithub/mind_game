@@ -51,7 +51,21 @@ public class Game {
       // announce the colour
       MessageCli.PRINT_POWER_COLOUR.printMessage(powerColour);
     }
+
+    // calculate and award points
+    awardPoints(ai, human);
+    awardPoints(human, ai);
   }
 
   public void showStats() {}
+
+  public void awardPoints(Player player, Player opponent) {
+    int points = 0;
+
+    if (player.getGuess().equals(opponent.getColour())) {
+      points += 1;
+    }
+
+    MessageCli.PRINT_OUTCOME_ROUND.printMessage(player.getName(), points);
+  }
 }

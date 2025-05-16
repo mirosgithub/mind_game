@@ -44,12 +44,13 @@ public class Game {
     MessageCli.PRINT_INFO_MOVE.printMessage(ai.getName(), ai.getColour(), ai.getGuess());
     MessageCli.PRINT_INFO_MOVE.printMessage(human.getName(), human.getColour(), human.getGuess());
 
-    // select power colour every 3 rounds
+    // set power colour every 3 rounds
     if (currentRound % 3 == 0) {
       powerColour = Colour.getRandomColourForPowerColour();
-
-      // announce the colour
       MessageCli.PRINT_POWER_COLOUR.printMessage(powerColour);
+    } else {
+      // reset power colour
+      powerColour = null;
     }
 
     // calculate and award points
@@ -64,6 +65,9 @@ public class Game {
 
     if (player.getGuess().equals(opponent.getColour())) {
       points += 1;
+      if (player.getGuess().equals(powerColour)) {
+        points += 2;
+      }
     }
 
     MessageCli.PRINT_OUTCOME_ROUND.printMessage(player.getName(), points);

@@ -20,10 +20,12 @@ public class HardAi extends Ai {
   @Override
   public void play() {
     currentRound++;
-
+    
+    // use different strategies from round 3
     if (currentRound == 3) {
       setStrategy(leastUsedStrategy);
     } else if (currentRound >= 4 && roundPoints == 0) {
+      // switch strategies based on performance
       if (strategy instanceof LeastUsedStrategy) {
         setStrategy(avoidLastStrategy);
       } else {

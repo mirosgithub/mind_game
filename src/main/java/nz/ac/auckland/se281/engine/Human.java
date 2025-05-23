@@ -18,16 +18,12 @@ public class Human extends Player {
   public void play() {
     // prompt for colours
     MessageCli.ASK_HUMAN_INPUT.printMessage();
-
-    // read colour input
     readColourInput();
 
     // validate input
     while (colour == null || guess == null) {
       // print error message
       MessageCli.INVALID_HUMAN_INPUT.printMessage();
-
-      // read colour input again
       readColourInput();
     }
 

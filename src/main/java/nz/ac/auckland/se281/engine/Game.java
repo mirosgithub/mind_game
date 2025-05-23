@@ -15,8 +15,6 @@ public class Game {
   private Colour powerColour;
   private boolean gameOn = false;
 
-  public Game() {}
-
   public void newGame(Difficulty difficulty, int numRounds, String[] options) {
     // configure game settings
     this.difficulty = difficulty;
@@ -88,8 +86,10 @@ public class Game {
   public void awardPoints(Player player) {
     int points = 0;
 
+    // award point for correct guess
     if (player.getGuess().equals(player.getOpponent().getColour())) {
       points += 1;
+      // award extra points for power colour match
       if (player.getGuess().equals(powerColour)) {
         points += 2;
       }
@@ -101,7 +101,10 @@ public class Game {
   }
 
   public void endGame() {
+    // announce end of game
     MessageCli.PRINT_END_GAME.printMessage();
+
+    // announce game results
     if (ai.getTotalPoints() == human.getTotalPoints()) {
       MessageCli.PRINT_TIE_GAME.printMessage();
     } else if (ai.getTotalPoints() > human.getTotalPoints()) {

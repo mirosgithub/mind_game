@@ -5,6 +5,7 @@ import nz.ac.auckland.se281.Main.Difficulty;
 public class AiFactory {
   
   public static Ai createAi(String name, Difficulty difficulty) {
+    // create and return new AI based on difficulty level
     switch (difficulty) {
       case EASY:
         return new EasyAi(name);

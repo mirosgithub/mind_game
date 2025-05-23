@@ -24,10 +24,10 @@ public class HardAi extends Ai {
     if (currentRound == 3) {
       setStrategy(leastUsedStrategy);
     } else if (currentRound >= 4 && roundPoints == 0) {
-      if (strategy.equals(leastUsedStrategy)) {
-        strategy = avoidLastStrategy;
+      if (strategy instanceof LeastUsedStrategy) {
+        setStrategy(avoidLastStrategy);
       } else {
-        strategy = leastUsedStrategy;
+        setStrategy(leastUsedStrategy);
       }
     }
     super.play();

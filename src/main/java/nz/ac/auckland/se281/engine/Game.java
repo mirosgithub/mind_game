@@ -109,5 +109,7 @@ public class Game {
     } else {
       MessageCli.PRINT_WINNER_GAME.printMessage(human.getName());
     }
+
+    gameOn = false;
   }
 }

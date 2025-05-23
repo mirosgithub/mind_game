@@ -13,16 +13,21 @@ public class LeastUsedStrategy implements Strategy {
   public void guessColour(Player player) {
     Human human = (Human) player.getOpponent();
     Colour leastUsed = Colour.RED;
+    int minCount = human.getColourCount(leastUsed);
 
-    if (human.getColourCount(Colour.GREEN) < human.getColourCount(leastUsed)) {
+    // check each color and update if we find one used less
+    if (human.getColourCount(Colour.GREEN) < minCount) {
       leastUsed = Colour.GREEN;
-    } else if (human.getColourCount(Colour.BLUE) < human.getColourCount(leastUsed)) {
+      minCount = human.getColourCount(leastUsed);
+    }
+    if (human.getColourCount(Colour.BLUE) < minCount) {
       leastUsed = Colour.BLUE;
-    } else if (human.getColourCount(Colour.YELLOW) < human.getColourCount(leastUsed)) {
+      minCount = human.getColourCount(leastUsed);
+    }
+    if (human.getColourCount(Colour.YELLOW) < minCount) {
       leastUsed = Colour.YELLOW;
     }
 
     player.setGuess(leastUsed);
   }
-  
 }

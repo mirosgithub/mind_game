@@ -2,7 +2,6 @@ package nz.ac.auckland.se281.engine;
 
 import java.util.ArrayList;
 import java.util.List;
-
 import nz.ac.auckland.se281.cli.MessageCli;
 import nz.ac.auckland.se281.cli.Utils;
 import nz.ac.auckland.se281.model.Colour;
@@ -31,6 +30,9 @@ public class Human extends Player {
       // read colour input again
       readColourInput();
     }
+
+    // store colour history
+    colourHistory.add(colour);
   }
 
   private void readColourInput() {
@@ -43,9 +45,6 @@ public class Human extends Player {
       colour = Colour.fromInput(inputs[0]);
       guess = Colour.fromInput(inputs[1]);
     }
-
-    // store colour history
-    colourHistory.add(colour);
   }
 
   public int getColourCount(Colour colour) {
@@ -59,5 +58,4 @@ public class Human extends Player {
 
     return count;
   }
-  
 }

@@ -35,8 +35,8 @@ public class Human extends Player {
 
   private void readColourInput() {
     // read input
-    String input = Utils.scanner.nextLine();
-    String[] inputs = input.split(" ");
+    String input = Utils.scanner.nextLine().trim();
+    String[] inputs = input.split("\\s+");
 
     // convert to Colour enum
     if (inputs.length == 2) {
